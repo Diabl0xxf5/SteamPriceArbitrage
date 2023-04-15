@@ -38,7 +38,10 @@
 *.txt
 *.csv
 *.ilk
-*.vcxprof.*
+*.vcxproj*
 *.log
+*.tlog
+*.idb
 *.lastbuildstate
 unsuccessfulbuild
+.vs
