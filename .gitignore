@@ -32,3 +32,13 @@
 *.app
 
 *.sln
+*.pdb
+*.ipdb
+*.iobj
+*.txt
+*.csv
+*.ilk
+*.vcxprof.*
+*.log
+*.lastbuildstate
+unsuccessfulbuild
