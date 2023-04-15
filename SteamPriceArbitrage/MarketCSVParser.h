@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <codecvt>
 
 struct csv_line {
 
@@ -52,23 +53,24 @@ struct csv_line {
 	}
 
 	const wchar_t delimiter = ';';
-	
+
 };
 
 std::vector<csv_line> parseCSV(std::string filename) {
 
-	std::ifstream work_file(filename);
+	std::wifstream work_file(filename);
 
 	std::vector<csv_line> data;
 	data.reserve(100'000);
 
 	if (work_file.is_open()) {
-		std::wifstream f(filename);
+		auto conv = new std::codecvt_utf8<wchar_t>;
+		work_file.imbue(std::locale(std::locale::empty(), conv));
 		std::wstringstream ss;
-		ss << f.rdbuf();
+		ss << work_file.rdbuf();
 
-		std::wstring line;
-		getline(ss, line);
+		std::wstring line; 
+		getline(ss, line); // skip head
 
 		while (getline(ss, line)) {
 			data.push_back(line);
