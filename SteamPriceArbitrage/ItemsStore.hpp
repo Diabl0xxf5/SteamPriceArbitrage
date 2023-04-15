@@ -23,7 +23,7 @@ public:
 		{
 			LOG_DURATION("CSV PARSE");
 
-			data_csv = parseCSV("D:\\SteamPriceArbitrage\\items_730_1681315188.csv");
+			data_csv = parseCSV(filename);
 			std::cerr << "DATA SIZE: " << data_csv.size() << std::endl;
 		}
 

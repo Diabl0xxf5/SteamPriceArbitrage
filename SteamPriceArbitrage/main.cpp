@@ -20,12 +20,12 @@ int main()
 	{
 		LOG_DURATION("PROXYLIST FILL");
 
-		proxy_list.AddProxyHTTP("D:\\SteamPriceArbitrage\\proxylist_http.txt");
-		proxy_list.AddProxyListSOCK4("D:\\SteamPriceArbitrage\\proxylist_sock4.txt");
-		proxy_list.AddProxyListSOCK5("D:\\SteamPriceArbitrage\\proxylist_sock5.txt");
+		proxy_list.AddProxyHTTP("G:\\SteamPriceArbitrage\\proxylist_http.txt");
+		proxy_list.AddProxyListSOCK4("G:\\SteamPriceArbitrage\\proxylist_sock4.txt");
+		proxy_list.AddProxyListSOCK5("G:\\SteamPriceArbitrage\\proxylist_sock5.txt");
 	}
 
-	ItemsStore itemStore("D:\\SteamPriceArbitrage\\items_730_1681315188.csv");
+	ItemsStore itemStore("G:\\SteamPriceArbitrage\\items_730_1681315188.csv");
 
 	{
 		LOG_DURATION("STEAM PRICE FILL");
@@ -113,19 +113,20 @@ int main()
 				}
 			}		
 		};
-
-
-		std::thread t1(Updater);
-		std::thread t2(Updater);
-		std::thread t3(Updater);
-		std::thread t4(Updater);
-		std::thread t5(Updater);
 		
-		t1.join();
-		t2.join();
-		t3.join();
-		t4.join();
-		t5.join();
+		std::vector<std::thread> threads;
+
+		int num_thread = 10;
+
+		for (int i = 0; i < num_thread; ++i) {
+			std::thread t(Updater);
+			threads.push_back(move(t));
+		}
+
+		for (int i = 0; i < num_thread; ++i) {
+			threads[i].join();
+		}
+
 	}
 
 	return 0;
