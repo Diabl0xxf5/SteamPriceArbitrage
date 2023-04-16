@@ -57,10 +57,9 @@ int main()
 					proxyAdress = proxy_list.GetNext();
 				}
 
-				std::wstring bodyRequest = L"?market_hash_name=";
-				bodyRequest.append(market_hash_name);
-				bodyRequest.append(staticRequest);
-				std::wstring wbodyRequest(bodyRequest.begin(), bodyRequest.end());
+				std::wstring wbodyRequest = L"?market_hash_name=";
+				wbodyRequest.append(market_hash_name);
+				wbodyRequest.append(staticRequest);
 				std::wstring wproxyAdress(proxyAdress.begin(), proxyAdress.end());
 
 				int cur_try = 0;
