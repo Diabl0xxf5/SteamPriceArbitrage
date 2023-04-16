@@ -30,7 +30,9 @@ public:
 		{
 			LOG_DURATION("MAP GENERATE");
 
-			const std::map<std::wstring, std::wstring> char_replace{ {L" ", L"%20"}, {L"(", L"%28"}, {L")", L"%29"}, {L"|",L"%7C"}, {L"\"", L""}, {L"'", L"%27"} };
+			const std::map<std::wstring, std::wstring> char_replace{ {L" ", L"%20"}, {L"(", L"%28"}, {L")", L"%29"}, 
+																     {L"|", L"%7C"}, {L"\"",   L""}, {L"'", L"%27"},
+																	 {L"&", L"%26"}, {L",", L"%2C"}, {L"+", L"%2B"} };
 			for (auto item : data_csv) {
 				std::wstring market_hash_name = item.c_market_hash_name;
 				double market_price = stod(item.c_price) / 100;

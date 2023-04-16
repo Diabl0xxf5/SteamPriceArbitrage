@@ -92,7 +92,8 @@ int main()
 						continue;
 					}
 					else if (!r_success) {
-						//std::cerr << "GET SUCCESS EQUELS FALSE. json: " << json << "\n";
+						//std::cerr << market_hash_name.c_str() << std::endl;
+						std::cerr << "GET SUCCESS EQUELS FALSE. json: " << json << "\n";
 						continue;
 					}
 
@@ -116,7 +117,7 @@ int main()
 		
 		std::vector<std::thread> threads;
 
-		int num_thread = 10;
+		int num_thread = 20;
 
 		for (int i = 0; i < num_thread; ++i) {
 			std::thread t(Updater);
