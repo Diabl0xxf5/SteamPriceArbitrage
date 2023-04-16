@@ -45,3 +45,4 @@
 *.lastbuildstate
 unsuccessfulbuild
 .vs
+*.recipe
